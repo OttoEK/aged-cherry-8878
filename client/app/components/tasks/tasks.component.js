@@ -32,12 +32,8 @@ var TasksComponent = (function () {
         });
     };
     TasksComponent.prototype.updateStatus = function (task) {
-        var _task = {
-            _id: task._id,
-            title: task.title,
-            isdone: !task.isDone
-        };
-        this.taskService.updateStatus(_task).subscribe(function (data) {
+        console.log("tasks.component.ts " + task.isDone);
+        this.taskService.updateStatus(task).subscribe(function (data) {
             task.isDone = !task.isDone;
         });
     };

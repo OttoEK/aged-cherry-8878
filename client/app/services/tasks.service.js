@@ -32,15 +32,9 @@ var TaskService = (function () {
     };
     TaskService.prototype.updateStatus = function (task) {
         var headers = new http_1.Headers();
+        console.log(task);
         headers.append('Content-Type', 'application/json');
         return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    TaskService.prototype.updateStatusCool = function (task) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        var url = "/api/task/" + task._id;
-        return this.http.put(url, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return TaskService;

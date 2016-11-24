@@ -32,12 +32,8 @@ export class TasksComponent {
   }
 
   updateStatus(task){
-    var _task = {
-      _id: task._id,
-      title: task.title,
-      isdone: !task.isDone
-    };
-    this.taskService.updateStatus(_task).subscribe(data => {
+    console.log("tasks.component.ts "+task.isDone);
+    this.taskService.updateStatus(task).subscribe(data => {
       task.isDone = !task.isDone;
     });
   }

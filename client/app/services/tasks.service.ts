@@ -25,18 +25,11 @@ export class TaskService{
     .map(res=> res.json());
   }
 
-  updateStatus(task : Task){
+  updateStatus(task){
     var headers = new Headers();
+    console.log(task);
     headers.append('Content-Type', 'application/json');
     return this.http.put('/api/task/'+task._id, JSON.stringify(task), {headers:headers})
-    .map(res => res.json());
-  }
-
-  updateStatusCool(task: Task){
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const url = `/api/task/${task._id}`;
-    return this.http.put(url, JSON.stringify(task), {headers:headers})
     .map(res => res.json());
   }
 }

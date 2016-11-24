@@ -32,10 +32,7 @@ var TasksComponent = (function () {
         });
     };
     TasksComponent.prototype.updateStatus = function (task) {
-        console.log("tasks.component.ts " + task.isDone);
-        this.taskService.updateStatus(task).subscribe(function (data) {
-            task.isDone = !task.isDone;
-        });
+        this.taskService.updateStatus(task).subscribe();
     };
     TasksComponent.prototype.deleteTask = function (id) {
         var tasks = this.tasks;

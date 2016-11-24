@@ -27,8 +27,8 @@ export class TaskService{
 
   updateStatus(task){
     var headers = new Headers();
-    console.log(task);
     headers.append('Content-Type', 'application/json');
+    task.isDone = !task.isDone;
     return this.http.put('/api/task/'+task._id, JSON.stringify(task), {headers:headers})
     .map(res => res.json());
   }

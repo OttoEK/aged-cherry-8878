@@ -8,6 +8,7 @@
   <div *ngFor="let task of tasks">
       <div class="col-sm-1">
         <input type="checkbox" [checked]="task.isDone" (click)="updateStatus(task)">
+        {{task.isDone}}
       </div>
       <div class="col-sm-7">
         {{task.title}}

@@ -32,10 +32,7 @@ export class TasksComponent {
   }
 
   updateStatus(task){
-    console.log("tasks.component.ts "+task.isDone);
-    this.taskService.updateStatus(task).subscribe(data => {
-      task.isDone = !task.isDone;
-    });
+    this.taskService.updateStatus(task).subscribe();
   }
 
   deleteTask(id){
@@ -50,6 +47,4 @@ export class TasksComponent {
       }
     });
   }
-
-
 }

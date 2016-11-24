@@ -32,8 +32,8 @@ var TaskService = (function () {
     };
     TaskService.prototype.updateStatus = function (task) {
         var headers = new http_1.Headers();
-        console.log(task);
         headers.append('Content-Type', 'application/json');
+        task.isDone = !task.isDone;
         return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };

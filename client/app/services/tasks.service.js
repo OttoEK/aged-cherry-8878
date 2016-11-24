@@ -17,7 +17,30 @@ var TaskService = (function () {
         console.log("Task Service Initialized...");
     }
     TaskService.prototype.getTasks = function () {
-        return this.http.get('http://localhost:3000/api/tasks')
+        return this.http.get('/api/tasks')
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.addTask = function (newTask) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.deleteTask = function (id) {
+        return this.http.delete('/api/task/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.updateStatus = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.updateStatusCool = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        var url = "/api/task/" + task._id;
+        return this.http.put(url, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return TaskService;
